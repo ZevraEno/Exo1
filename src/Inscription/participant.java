@@ -2,24 +2,16 @@ package Inscription;
 
 import ExceptionInscription.doublonException;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
 public class participant extends VueInscription implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
-    private String nom;
-    private String prenom;
-    private String club;
-    private String mail;
     static boolean doublon = false;
     public static List<String> listeParticipant = new ArrayList<>();
     public static List<String> listeClubs = new ArrayList<>(Arrays.asList("baseball", "aqua-poney"));
-    public participant(String nom, String prenom, String mail, String club) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.mail = mail;
-        this.club = club;
-    }
 
     public static void ajouter() throws doublonException {
         Scanner scanner = new Scanner(System.in);
