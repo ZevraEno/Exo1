@@ -87,7 +87,6 @@ public class participant extends VueInscription implements Serializable {
                 System.out.println("3) Email");
                 System.out.println("4) Club");
                 System.out.println("5) Annuler");
-                System.out.print("Votre choix : ");
                 String choix = scanner.nextLine();
                 String[] infos = participantInfo.split(" \\| ");
                 String nouveauPrenom = infos[0].split(" : ")[1];
@@ -96,63 +95,61 @@ public class participant extends VueInscription implements Serializable {
                 String nouveauClub = infos[3].split(" : ")[1];
                 switch (choix) {
                     case "1":
-                        System.out.print("Entrez le nouveau prénom : ");
+                        System.out.print("entrez le nouveau prénom : ");
                         nouveauPrenom = scanner.nextLine();
                         break;
                     case "2":
-                        System.out.print("Entrez le nouveau nom : ");
+                        System.out.print("entrez le nouveau nom : ");
                         nouveauNom = scanner.nextLine();
                         break;
                     case "3":
                         while (true) {
-                            System.out.print("Entrez le nouvel email : ");
+                            System.out.print("entrez le nouvel email : ");
                             nouvelEmail = scanner.nextLine();
                             if (nouvelEmail.matches("^[a-zA-Z0-9._%+-]+@gmail\\.com$")) {
                                 break;
                             } else {
-                                System.out.println("Erreur : L'email doit être au format '@gmail.com'.");
+                                System.out.println("Erreur :format '@gmail.com'.");
                             }
                         }
                         break;
                     case "4":
-                        System.out.println("Voici les clubs disponibles :");
+                        System.out.println("clubs disponibles :");
                         for (int j = 0; j < listeClubs.size(); j++) {
                             System.out.println((j + 1) + ") " + listeClubs.get(j));
                         }
-                        System.out.println((listeClubs.size() + 1) + ") Ajouter un nouveau club");
-                        System.out.print("Votre choix : ");
+                        System.out.println((listeClubs.size() + 1) + ") nouveau club");
+                        System.out.print("choix : ");
                         int choixClub = scanner.nextInt();
                         scanner.nextLine();
 
                         if (choixClub == listeClubs.size() + 1) {
-                            System.out.print("Entrez le nom du nouveau club : ");
+                            System.out.print("entrez le nom du nouveau club : ");
                             nouveauClub = scanner.nextLine();
                             listeClubs.add(nouveauClub);
-                            System.out.println("Nouveau club ajouté : " + nouveauClub);
+                            System.out.println("club ajouté : " + nouveauClub);
                         } else if (choixClub > 0 && choixClub <= listeClubs.size()) {
                             nouveauClub = listeClubs.get(choixClub - 1);
                         } else {
-                            System.out.println("Choix invalide. Modification annulée.");
+                            System.out.println("Modification annulée.");
                             return;
                         }
                         break;
                     case "5":
-                        System.out.println("Modification annulée.");
+                        System.out.println("modification annulée.");
                         return;
                     default:
-                        System.out.println("Choix invalide. Modification annulée.");
+                        System.out.println("modification annulée.");
                         return;
                 }
-                String nouveauParticipantInfo = "prenom : " + nouveauPrenom + " | nom : " + nouveauNom +
-                        " | email: " + nouvelEmail +
-                        " | club: " + nouveauClub;
+                String nouveauParticipantInfo = "prenom : " + nouveauPrenom + " | nom : " + nouveauNom + " | email: " + nouvelEmail + " | club: " + nouveauClub;
                 listeParticipant.set(i, nouveauParticipantInfo);
                 System.out.println("Participant modifié : " + nouveauParticipantInfo);
                 break;
             }
         }
         if (!participantTrouve) {
-            System.out.println("Participant non trouvé. Vérifiez le prénom et le nom saisis.");
+            System.out.println("Participant non trouvé.");
         }
     }
 
@@ -160,7 +157,7 @@ public class participant extends VueInscription implements Serializable {
         Scanner scanner = new Scanner(System.in);
 
         if (listeParticipant.isEmpty()) {
-            System.out.println("Liste vide. Ajoutez des participants.");
+            System.out.println("Liste vide.");
             return;
         }
         System.out.print("prénom du participant a supprimer : ");
@@ -209,9 +206,9 @@ public class participant extends VueInscription implements Serializable {
             for (int i = 0; i < listeClubs.size(); i++) {
                 System.out.println((i + 1) + ") " + listeClubs.get(i));
             }
-            System.out.println((listeClubs.size() + 1) + ") Ajouter un nouveau club");
+            System.out.println((listeClubs.size() + 1) + ") Ajouter un club");
 
-            System.out.print("Choisissez un club ou ajoutez-en un nouveau (1-" + (listeClubs.size() + 1) + ") : ");
+            System.out.print("Choisir ou ajoutez-en un club (1-" + (listeClubs.size() + 1) + ") : ");
             String choix = scanner.nextLine();
 
             try {
@@ -225,7 +222,7 @@ public class participant extends VueInscription implements Serializable {
                     System.out.println("ajouté : " + nouveauClub);
                     return nouveauClub;
                 } else {
-                    System.out.println("Veuillez réessayer.");
+                    System.out.println("réessayer.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("entrer un nombre valide.");

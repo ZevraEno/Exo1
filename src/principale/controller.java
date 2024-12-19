@@ -12,11 +12,11 @@ public class controller {
 
     public void start() throws doublonException {
         participant.listeParticipant = donnee.charger();
-
         Scanner scanner = new Scanner(System.in);
         boolean continuer = true;
 
         while (continuer) {
+            participant.liste();
             System.out.println("1) Ajouter");
             System.out.println("2) Modifier");
             System.out.println("3) Supprimer");
