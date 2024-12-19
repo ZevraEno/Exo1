@@ -6,7 +6,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
-public class participant extends VueInscription implements Serializable {
+public class participant implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     static boolean doublon = false;

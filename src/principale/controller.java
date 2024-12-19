@@ -1,14 +1,13 @@
 package principale;
 
 import ExceptionInscription.doublonException;
+import Inscription.VueInscription;
 import Inscription.participant;
 import utility.donnee;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class controller {
+public class controller{
 
     public void start() throws doublonException {
         participant.listeParticipant = donnee.charger();
